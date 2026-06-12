@@ -4,6 +4,11 @@ pipeline {
 
     stages {
 
+stage('Docker Test') {
+            steps {
+                sh 'docker --version'
+            }
+        }
         stage('Checkout') {
             steps {
                 echo 'Getting source code'
