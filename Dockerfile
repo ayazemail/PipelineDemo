@@ -1,14 +1,9 @@
-# Use a small nginx image to serve a static HTML app
-FROM nginx:alpine
+FROM node:22-alpine
 
-# Remove the default nginx content
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /app
 
-# Copy the static site into nginx's public folder
-COPY index.html /usr/share/nginx/html/index.html
+COPY app.js .
 
-# Expose the HTTP port
-EXPOSE 80
+EXPOSE 3000
 
-# Start nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "app.js"]
